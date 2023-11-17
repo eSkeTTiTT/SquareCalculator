@@ -32,11 +32,11 @@ internal abstract class FigureBase : IFigure
 			throw new ArgumentNullException(nameof(values));
 
 		if (values.Length != ParamsLength)
-			throw new ArgumentException($"Некорректная длина параметров ({values.Length}) для инициализации фигуры.", nameof(values));
+			throw new ArgumentOutOfRangeException(nameof(values), $"Некорректная длина параметров ({values.Length}) для инициализации фигуры.");
 
 		for (int i = 0; i < ParamsLength; ++i)
 			if (values[i] < 0)
-				throw new ArgumentException("Значения для сторон не могут быть меньше нуля.", nameof(values));
+				throw new InvalidDataException("Значения для сторон не могут быть меньше нуля.");
 	}
 
 	/// <summary>
